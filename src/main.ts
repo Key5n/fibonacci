@@ -10,6 +10,8 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(),
   );
-  await app.listen(3000);
+  const port = Number(process.env.PORT) || 3000; // Cloud Run の要件。環境変数PORTで起動するように。
+
+  await app.listen(port, '0.0.0.0');
 }
 bootstrap();
