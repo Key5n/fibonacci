@@ -1,73 +1,55 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 使い方
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### https://fibonacci-6kvczdmylq-uc.a.run.app/
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+下のメッセージを返す
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+```
+Please enter into /fib?n={number}
 ```
 
-## Running the app
+#### https://fibonacci-6kvczdmylq-uc.a.run.app/fib?n={number}
 
-```bash
-# development
-$ npm run start
+フィボナッチ数列の第 n 項の値を返す
 
-# watch mode
-$ npm run start:dev
+# NestJS の HTTP framework には Express と Fastify のどちらを使用すべきか
 
-# production mode
-$ npm run start:prod
-```
+## Express
 
-## Test
+### メリット
 
-```bash
-# unit tests
-$ npm run test
+- サードパーティとドキュメントの豊富さ
+- platform-express には追加でセットアップが必要なし
+- Good Practice と 優れたガイドライン
+- デフォルトで依存注入
+- 人気ライブラリのインテグレーションが存在
 
-# e2e tests
-$ npm run test:e2e
+### デメリット
 
-# test coverage
-$ npm run test:cov
-```
+- パフォーマンスの低さ
 
-## Support
+## Fastify
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### メリット
 
-## Stay in touch
+- 高パフォーマンス
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### デメリット
 
-## License
+- ドキュメントの少なさ
+- プラグインをセットアップする必要あり
 
-Nest is [MIT licensed](LICENSE).
+## 2 つの性能比較
+
+RPS を比較すると、 200 同時接続に対して express では 17K、Fastify では 50K RPS であることから、NestJS + Fastify のほうがパフォーマンスが 3 倍ほど高いことがわかる。
+![リクエスト処理にかかった時間](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*8FcfBR8-0cvAxHP88yCFOQ.png)
+![1秒ごとに処理可能なリクエスト数](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*iqCrwEHlwe2-F_jGTbmpYQ.png)
+[引用サイト](https://medium.com/deno-the-complete-reference/nestjs-express-vs-fastify-comparison-for-hello-world-19875479e41d)
+
+同様の理由で NestJS と Vanilla Fastify の比較では NestJS を選択
+
+### その他の参考サイト
+
+- [Fastify vs NestJS](https://stackshare.io/stackups/fastify-vs-nestjs)
+- [NestJS Express vs Fastify](https://progressivecoder.com/nestjs-express-vs-fastify/)
+- [Nest + Fastify vs Vanilla Fastify](https://www.reddit.com/r/node/comments/n94nbp/nest_fastify_vs_vanilla_fastify_what_are_the/)
