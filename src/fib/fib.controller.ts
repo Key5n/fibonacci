@@ -6,7 +6,7 @@ export class FibController {
   constructor(private readonly fibService: FibService) {}
 
   @Get()
-  getFibNumber(@Query('n') n: string): number {
+  getFibNumber(@Query('n') n: string): { result: number } {
     const nAsNumber = Number(n);
 
     // nが数値でない場合、負の値の場合はエラー
@@ -16,6 +16,6 @@ export class FibController {
       );
     }
 
-    return this.fibService.getFibNumber(nAsNumber);
+    return { result: this.fibService.getFibNumber(nAsNumber) };
   }
 }

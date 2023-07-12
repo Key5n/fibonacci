@@ -17,11 +17,11 @@ describe('FibController', () => {
     fibService = app.get<FibService>(FibService);
   });
 
-  it('should return a number when n is a valid non-negative integer', () => {
+  it('should return a result object when n is a valid non-negative integer', () => {
     const fibNumber = 5;
     jest.spyOn(fibService, 'getFibNumber').mockImplementation(() => fibNumber);
 
-    expect(fibController.getFibNumber('5')).toBe(fibNumber);
+    expect(fibController.getFibNumber('5')).toEqual({ result: fibNumber });
     expect(fibService.getFibNumber).toHaveBeenCalledWith(5);
   });
 
